@@ -1,0 +1,48 @@
+<h1>Register</h1>
+
+<%= render_errors %>
+
+<form action="<%= users_url %>" method="post">
+  <%= form_auth %>
+
+  <fieldset>
+    <label for="user_first_name">First Name</label>
+    <input id="user_first_name"
+           type="text"
+           name="user[first_name]"
+           value="<%= @user.first_name %>">
+  </fieldset>
+
+  <fieldset>
+    <label for="user_last_name">Last Name</label>
+    <input id="user_last_name"
+           type="text"
+           name="user[last_name]"
+           value="<%= @user.last_name %>">
+  </fieldset>
+
+  <fieldset>
+    <label for="user_email">Email</label>
+    <input id="user_email"
+           type="text"
+           name="user[email]"
+           value="<%= @user.email %>">
+  </fieldset>
+
+  <fieldset>
+    <label for="user_password">Password</label>
+    <input id="user_password"
+           type="text"
+           name="user[password]"
+           value="<%= @user.password %>">
+  </fieldset>
+
+  <fieldset>
+    <label for="user_password_confirmation">Password Confirmation</label>
+    <input id="user_password_confirmation"
+           type="text"
+           name="user[password_confirmation]">
+  </fieldset>
+
+  <button>Create Account</button>
+</form>

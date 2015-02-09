@@ -8,7 +8,19 @@
 </head>
 <body>
 
-<%= yield %>
+<main>
+  <nav class="group">
+    <a class="logo" href="<%= root_url %>">5 Seconds</a>
+
+    <ul class="nav-links group">
+      <li><a href="#">Search</a></li>
+      <li><a href="#">Sign In</a></li>
+      <li><a href="<%= new_user_url %>">Create an Account</a></li>
+    </ul>
+  </nav>
+
+  <%= yield %>
+</main>
 
 </body>
 </html>

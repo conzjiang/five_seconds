@@ -1,0 +1,38 @@
+/*
+ *= require_self
+ *= require_tree .
+ */
+
+@import url(http://fonts.googleapis.com/css?family=Playfair+Display:900|Muli:300);
+@import "utils/variables";
+
+html, body, h1, form, fieldset, label, input, button, ul, li, a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+body {
+  font-family: $default_font;
+  font-weight: 300;
+}
+
+h1 {
+  font-family: $title_font;
+  font-weight: 900;
+}
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
