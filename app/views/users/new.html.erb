@@ -1,48 +1,66 @@
-<h1>Register</h1>
+<form class="form" action="<%= users_url %>" method="post">
+  <h1>Register</h1>
 
-<%= render_errors %>
+  <% if flash[:errors] %>
+    <%= render_errors %>
 
-<form action="<%= users_url %>" method="post">
+    <script>
+      $(function () {
+        var errorFields, field;
+        errorFields = <%= @user.errors.keys.to_json.html_safe %>;
+
+        errorFields.forEach(function (fieldName) {
+          if (fieldName === "password_digest") fieldName = "password";
+          field = "#user_" + fieldName;
+          $(field).addClass("error");
+        });
+      });
+    </script>
+  <% end %>
+
   <%= form_auth %>
 
   <fieldset>
-    <label for="user_first_name">First Name</label>
     <input id="user_first_name"
            type="text"
            name="user[first_name]"
-           value="<%= @user.first_name %>">
+           value="<%= @user.first_name %>"
+           placeholder="First Name">
   </fieldset>
 
   <fieldset>
-    <label for="user_last_name">Last Name</label>
     <input id="user_last_name"
            type="text"
            name="user[last_name]"
-           value="<%= @user.last_name %>">
+           value="<%= @user.last_name %>"
+           placeholder="Last Name">
   </fieldset>
 
   <fieldset>
-    <label for="user_email">Email</label>
     <input id="user_email"
-           type="text"
+           type="email"
            name="user[email]"
-           value="<%= @user.email %>">
+           value="<%= @user.email %>"
+           placeholder="Email">
   </fieldset>
 
   <fieldset>
-    <label for="user_password">Password</label>
     <input id="user_password"
-           type="text"
+           type="password"
            name="user[password]"
-           value="<%= @user.password %>">
+           value="<%= @user.password %>"
+           placeholder="Password">
   </fieldset>
 
   <fieldset>
-    <label for="user_password_confirmation">Password Confirmation</label>
     <input id="user_password_confirmation"
-           type="text"
-           name="user[password_confirmation]">
+           type="password"
+           name="user[password_confirmation]"
+           value="<%= @user.password_confirmation %>"
+           placeholder="Confirm Password">
   </fieldset>
 
-  <button>Create Account</button>
+  <div class="button-wrapper">
+    <button>Create Account</button>
+  </div>
 </form>

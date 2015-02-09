@@ -8,16 +8,14 @@ module ApplicationHelper
   end
 
   def render_errors
-    if flash[:errors]
-      errors = "<ul class=\"errors\">"
+    errors = "<ul class=\"errors\">"
 
-      flash[:errors].each do |error|
-        errors << "<li>#{error}</li>"
-      end
-
-      errors << "</ul>"
-
-      errors.html_safe
+    flash[:errors].each do |error|
+      errors << "<li>#{error}</li>"
     end
+
+    errors << "</ul>"
+
+    errors.html_safe
   end
 end

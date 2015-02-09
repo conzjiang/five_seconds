@@ -11,15 +11,37 @@ html, body, h1, form, fieldset, label, input, button, ul, li, a {
   padding: 0;
   border: 0;
   font: inherit;
+  color: inherit;
+}
+
+input, textarea {
+  display: inline-block;
+  width: auto;
+  color: inherit;
+  background: transparent;
+  -webkit-appearance: none;
+  box-sizing: content-box;
+}
+
+input:focus, textarea:focus {
+  outline: 0;
+}
+
+button {
+  background: transparent;
+  vertical-align: baseline;
+  cursor: pointer;
 }
 
 body {
   font-family: $default_font;
   font-weight: 300;
+  background: $background_color;
 }
 
 h1 {
   font-family: $title_font;
+  font-size: 40px;
   font-weight: 900;
 }
 
@@ -35,4 +57,15 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+.errors {
+  list-style: disc;
+  margin: 20px 0;
+  padding-left: 30px;
+  color: $error_red;
+
+  li {
+    margin: 7px 0;
+  }
 }
