@@ -9,10 +9,12 @@
         var errorFields, field;
         errorFields = <%= @user.errors.keys.to_json.html_safe %>;
 
-        errorFields.forEach(function (fieldName) {
+        errorFields.forEach(function (fieldName, index) {
           if (fieldName === "password_digest") fieldName = "password";
           field = "#user_" + fieldName;
           $(field).addClass("error");
+
+          if (index === 0) $(field).focus().select();
         });
       });
     </script>

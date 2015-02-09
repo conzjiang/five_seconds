@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include BCrypt
+
   enum status: ["Employed", "Actively Looking", "Doing My Own Thing"]
 
   validates :first_name, :last_name, :password_digest, presence: true
@@ -13,6 +15,7 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   def password=(password)
-
+    @password = password
+    self.password_digest = Password.create(password)
   end
 end

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       render json: "success"
     else
-      flash[:errors] = @user.errors.full_messages
+      flash.now[:errors] = @user.errors.full_messages
       render :new
     end
   end
