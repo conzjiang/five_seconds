@@ -18,4 +18,9 @@ class User < ActiveRecord::Base
     @password = password
     self.password_digest = Password.create(password)
   end
+
+  def set_session_token!
+    new_session = sessions.create!
+    new_session.session_token
+  end
 end
