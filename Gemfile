@@ -16,4 +16,16 @@ gem 'bcrypt', require: 'bcrypt'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'pry-rails'
+  gem 'quiet_assets'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'shoulda-matchers', require: false
+end
+
+group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
