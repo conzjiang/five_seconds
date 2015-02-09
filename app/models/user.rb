@@ -14,6 +14,15 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
+  def self.find_by_credentials(email, password)
+    user = User.find_by(email: email)
+    user.try(:is_password?, password) ? user : nil
+  end
+
+  def is_password?(password)
+    Password.new(password_digest).is_password?(password)
+  end
+
   def password=(password)
     @password = password
     self.password_digest = Password.create(password)

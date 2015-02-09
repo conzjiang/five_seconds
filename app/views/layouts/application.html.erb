@@ -14,8 +14,20 @@
 
     <ul class="nav-links group">
       <li><a href="#">Search</a></li>
-      <li><a href="#">Sign In</a></li>
-      <li><a href="<%= new_user_url %>">Create an Account</a></li>
+
+      <% if signed_in? %>
+        <li><a href="#">Resume</a></li>
+        <li>
+          <form class="nav-link" action="<%= session_url %>" method="post">
+            <%= form_auth %>
+            <input type="hidden" name="_method" value="delete">
+            <button>Sign Out</button>
+          </form>
+        </li>
+      <% else %>
+        <li><a href="<%= new_session_url %>">Sign In</a></li>
+        <li><a href="<%= new_user_url %>">Create an Account</a></li>
+      <% end %>
     </ul>
   </nav>
 

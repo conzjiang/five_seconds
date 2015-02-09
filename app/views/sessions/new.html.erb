@@ -1,0 +1,29 @@
+<form class="form" action="<%= sessions_url %>" method="post">
+  <h1>Sign In</h1>
+
+  <% if flash[:errors] %>
+    <%= render_errors %>
+  <% end %>
+
+  <%= form_auth %>
+
+  <fieldset>
+    <input id="user_email"
+           type="email"
+           name="user[email]"
+           value="<%= @user.email %>"
+           placeholder="Email">
+  </fieldset>
+
+  <fieldset>
+    <input id="user_password"
+           type="password"
+           name="user[password]"
+           value="<%= @user.password %>"
+           placeholder="Password">
+  </fieldset>
+
+  <div class="button-wrapper">
+    <button>Sign In</button>
+  </div>
+</form>

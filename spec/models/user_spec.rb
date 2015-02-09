@@ -20,6 +20,17 @@ RSpec.describe User do
     expect(user.password_digest).not_to be_nil
   end
 
+  describe "::find_by_credentials" do
+    it "finds a user by email and password" do
+      user = create(:user, email: "aaa", password: "123456")
+      expect(User.find_by_credentials("aaa", "123456")).to eq(user)
+    end
+
+    it "returns nil if none is found" do
+      expect(User.find_by_credentials("aaa", "bbbbbb")).to be_nil
+    end
+  end
+
   describe "#set_session_token!" do
     it "creates a session" do
       user.set_session_token!
