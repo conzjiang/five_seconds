@@ -1,0 +1,56 @@
+<article>
+  <fieldset>
+    <input type="text"
+           name="experience[<%= counter %>][title]"
+           value="<%= experience.title %>"
+           placeholder="Job Title">
+  </fieldset>
+
+  <fieldset>
+    <input id="company"
+           type="text"
+           value="<%= experience.company && experience.company.name %>"
+           placeholder="Company">
+    <input type="hidden"
+           name="experience[<%= counter %>][company_id]"
+           value="<%= experience.company_id %>">
+  </fieldset>
+
+  <fieldset>
+    <label for="experience_<%= counter %>_start_date">Start Date</label>
+    <%= date_select(
+      "experience[#{counter}]",
+      "start_date",
+      start_year: 1990,
+      end_year: Date.current.year,
+      add_month_numbers: true,
+      discard_day: true,
+      prompt: true
+    ) %>
+  </fieldset>
+
+  <fieldset>
+    <label for="experience_<%= counter %>_end_date">
+      End Date
+      <small>(Leave this field blank if you currently work here!)</small>
+    </label>
+    <%= date_select(
+      "experience[#{counter}]",
+      "end_date",
+      start_year: 1990,
+      end_year: Date.current.year,
+      add_month_numbers: true,
+      discard_day: true,
+      prompt: true
+    ) %>
+  </fieldset>
+</article>
+
+<script>
+  $(function () {
+    new FiveSeconds.Views.ListItemView({
+      el: $("article"),
+      counter: <%= counter %>
+    }).addItem();
+  });
+</script>

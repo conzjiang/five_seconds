@@ -6,7 +6,7 @@
 @import url(http://fonts.googleapis.com/css?family=Playfair+Display:900|Muli:300);
 @import "utils/variables";
 
-html, body, h1, form, fieldset, label, input, button, ul, li, a {
+html, body, h1, form, fieldset, label, input, button, ul, li, a, select {
   margin: 0;
   padding: 0;
   border: 0;
@@ -14,7 +14,9 @@ html, body, h1, form, fieldset, label, input, button, ul, li, a {
   color: inherit;
 }
 
-input, textarea {
+input,
+textarea,
+select {
   display: inline-block;
   width: auto;
   color: inherit;
@@ -23,7 +25,9 @@ input, textarea {
   box-sizing: content-box;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus,
+select:focus {
   outline: 0;
 }
 
@@ -36,6 +40,7 @@ button {
 body {
   font-family: $default_font;
   font-weight: 300;
+  color: #333;
   background: $background_color;
 }
 

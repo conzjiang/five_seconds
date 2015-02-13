@@ -1,0 +1,7 @@
+<form class="form" action="<%= experiences_url %>" method="post">
+  <h1>Add your experience!</h1>
+
+  <%= form_auth %>
+
+  <%= render "experience_form", counter: 0, experience: @experience %>
+</form>

@@ -12,6 +12,13 @@ class ApplicationController < ActionController::Base
     @current_user ||= current_session.user
   end
 
+  def require_sign_in
+    unless signed_in?
+      flash[:errors] = ["Please sign in first!"]
+      redirect_to new_session_url
+    end
+  end
+
   def sign_in!(user)
     session[:token] = user.set_session_token!
   end

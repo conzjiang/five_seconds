@@ -8,15 +8,11 @@ class UsersController < ApplicationController
 
     if @user.save
       sign_in!(@user)
-      redirect_to edit_user_url(@user)
+      redirect_to new_experience_url
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new
     end
-  end
-
-  def edit
-    @user = User.find(params[:id])
   end
 
   private

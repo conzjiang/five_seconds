@@ -19,12 +19,22 @@
     margin-bottom: 5px;
   }
 
+  small {
+    display: block;
+    font-size: 14px;
+  }
+
   input {
     display: block;
-    width: 100%;
+    width: calc(100% - 40px);
     padding: 15px 20px;
     background: #fff;
     border-bottom: 2px solid #ccc;
+  }
+
+  select {
+    padding: 10px 15px;
+    background: #fff;
   }
 
   .error {
