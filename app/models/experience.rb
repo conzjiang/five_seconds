@@ -2,6 +2,7 @@ class Experience < ActiveRecord::Base
   validates :title, :start_date, presence: true
 
   belongs_to :user
+  belongs_to :company
 
   def duration_in_months
     end_date = self.end_date || Date.current
