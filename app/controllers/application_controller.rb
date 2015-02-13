@@ -5,11 +5,12 @@ class ApplicationController < ActionController::Base
 
   private
   def current_session
+    return nil if session[:token].nil?
     @session ||= Session.find_by(session_token: session[:token])
   end
 
   def current_user
-    @current_user ||= current_session.user
+    @current_user ||= current_session.try(:user)
   end
 
   def require_sign_in
