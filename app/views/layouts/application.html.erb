@@ -13,6 +13,7 @@
     <a class="logo" href="<%= root_url %>">5 Seconds</a>
 
     <ul class="nav-links group">
+      <li><a href="<%= root_url %>">Home</a></li>
       <li><a href="#">Search</a></li>
 
       <% if signed_in? %>
@@ -35,6 +36,17 @@
     <%= yield %>
   </section>
 </main>
+
+<script>
+  $(function () {
+    $("a.logo").on("click", function (e) {
+      if ($(window).width() < 600) {
+        e.preventDefault();
+        $(".nav-links").toggleClass("open");
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
