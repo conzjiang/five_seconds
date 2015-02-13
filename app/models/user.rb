@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true, on: :create
 
   has_many :sessions
+  has_many :experiences
 
   attr_reader :password
 

@@ -9,6 +9,7 @@ RSpec.describe User do
   it { should validate_length_of(:password).is_at_least(6) }
   it { should validate_confirmation_of(:password) }
   it { should have_many(:sessions) }
+  it { should have_many(:experiences) }
 
   it "doesn't test password confirmation on update" do
     user.password_confirmation = nil
