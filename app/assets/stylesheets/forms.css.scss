@@ -13,6 +13,19 @@
   fieldset {
     display: block;
     margin: 20px 0;
+
+    &.with-label {
+      margin: 40px 0;
+    }
+  }
+
+  .fieldset-section {
+    margin-top: 40px;
+    margin-bottom: 20px;
+
+    fieldset:nth-of-type(1) {
+      margin-top: 0;
+    }
   }
 
   label {
@@ -25,12 +38,16 @@
     font-size: 14px;
   }
 
-  input {
+  input, textarea {
     display: block;
     width: calc(100% - 40px);
     padding: 15px 20px;
     background: #fff;
     border-bottom: 2px solid #ccc;
+  }
+
+  textarea {
+    height: 90px - 30px;
   }
 
   select {
@@ -47,6 +64,12 @@
     position: relative;
     top: 1px;
   }
+}
+
+.add-item {
+  display: inline-block;
+  margin: 5px 0;
+  font-size: 14px;
 }
 
 .button-wrapper {

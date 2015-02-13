@@ -16,7 +16,7 @@
            value="<%= experience.company_id %>">
   </fieldset>
 
-  <fieldset>
+  <fieldset class="with-label">
     <label for="experience_<%= counter %>_start_date">Start Date</label>
     <%= date_select(
       "experience[#{counter}]",
@@ -29,7 +29,7 @@
     ) %>
   </fieldset>
 
-  <fieldset>
+  <fieldset class="with-label">
     <label for="experience_<%= counter %>_end_date">
       End Date
       <small>(Leave this field blank if you currently work here!)</small>
@@ -44,13 +44,17 @@
       prompt: true
     ) %>
   </fieldset>
+
+  <div class="fieldset-section">
+    <label>Job Bullet Points</label>
+  </div>
 </article>
 
 <script>
   $(function () {
     new FiveSeconds.Views.ListItemView({
-      el: $("article"),
+      el: $(".fieldset-section"),
       counter: <%= counter %>
-    }).addItem();
+    }).addItem().times(3);
   });
 </script>

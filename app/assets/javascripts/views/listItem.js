@@ -13,9 +13,11 @@ FiveSeconds.Views.ListItemView = Backbone.View.extend({
 
   addItem: function (e) {
     e && e.preventDefault();
-    e && $(e.target).remove();
+    this.$("#item-" + (this.counter - 1)).remove();
     this.$el.append(this.$itemField());
     this.counter++;
+
+    return this;
   },
 
   $itemField: function () {
@@ -28,10 +30,21 @@ FiveSeconds.Views.ListItemView = Backbone.View.extend({
   },
 
   question: function () {
-    if (!this.counter) {
-      return "What did you do here?";
-    } else {
-      return "What else did you do here?";
+    switch (this.counter) {
+      case 0:
+        return "List one of your responsibilities.";
+      case 1:
+        return "List another one of your responsibilities.";
+      case 2:
+        return "How about one of your achievements?";
+      default:
+        return "What else did you accomplish here?";
+    }
+  },
+
+  times: function (num) {
+    for (var i = 0; i < num - 1; i++) {
+      this.addItem();
     }
   }
 });
