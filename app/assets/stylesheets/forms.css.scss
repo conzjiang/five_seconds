@@ -10,12 +10,24 @@
     text-align: center;
   }
 
+  .x {
+    display: none;
+    position: absolute;
+    top: -14px;
+    right: -6px;
+  }
+
   fieldset {
+    position: relative;
     display: block;
     margin: 20px 0;
 
     &.with-label {
       margin: 40px 0;
+    }
+
+    &:hover .x {
+      display: inline;
     }
   }
 
@@ -64,6 +76,12 @@
     position: relative;
     top: 1px;
   }
+}
+
+.x:before {
+  content: "\00d7";
+  font-size: 24px;
+  cursor: pointer;
 }
 
 .add-item {
