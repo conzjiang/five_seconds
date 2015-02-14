@@ -7,7 +7,14 @@ class ExperiencesController < ApplicationController
 
   def create
     @experience = current_user.experiences.new(experience_params)
+    build_experience
 
+    if @experience.save
+      params[:add] ? redirect_to(new_experience_url) : redirect_to root_url
+    else
+      flash[:errors] = @experience.errors.full_messages
+      render :new
+    end
   end
 
   private
@@ -20,11 +27,7 @@ class ExperiencesController < ApplicationController
     )
   end
 
-  def item_params
-    item_descriptions = params[:items].reject(&:blank?)
-
-    item_descriptions.map do |desc|
-      { description: desc }
-    end
+  def build_experience
+    BuildExperience.new(@experience, params).call
   end
 end
