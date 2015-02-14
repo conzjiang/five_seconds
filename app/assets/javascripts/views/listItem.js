@@ -1,6 +1,5 @@
 FiveSeconds.Views.ListItemView = Backbone.View.extend({
   initialize: function (options) {
-    this.expCounter = options.counter;
     this.description = options.description;
     this.counter = 0;
   },
@@ -23,7 +22,6 @@ FiveSeconds.Views.ListItemView = Backbone.View.extend({
 
   $itemField: function () {
     return this.template({
-      expCounter: this.expCounter,
       itemCounter: this.counter,
       question: this.question(),
       description: this.description

@@ -3,5 +3,11 @@
 
   <%= form_auth %>
 
-  <%= render "experience_form", counter: 0, experience: @experience %>
+  <%= render "experience_form", counter: @counter, experience: @experience %>
+
+  <div class="button-wrapper">
+    <button name="add" value="true">Add Another Position!</button>
+    or
+    <button>Save Resume</button>
+  </div>
 </form>
