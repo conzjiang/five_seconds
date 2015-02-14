@@ -8,7 +8,8 @@ FiveSeconds.Views.ListItemView = Backbone.View.extend({
   template: JST["listItem"],
 
   events: {
-    "click a": "addItem"
+    "click a": "addItem",
+    "click .x": "removeItem"
   },
 
   addItem: function (e) {
@@ -40,6 +41,10 @@ FiveSeconds.Views.ListItemView = Backbone.View.extend({
       default:
         return "What else did you accomplish here?";
     }
+  },
+
+  removeItem: function (e) {
+    $(e.target).parent().remove();
   },
 
   times: function (num) {
