@@ -3,6 +3,7 @@ RSpec.describe Experience do
   it { should validate_presence_of(:start_date) }
   it { should belong_to(:user) }
   it { should belong_to(:company) }
+  it { should have_many(:items) }
 
   describe "#duration_in_months" do
     it "calculates the duration of the work experience in months" do

@@ -3,6 +3,7 @@ class Experience < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :company
+  has_many :items
 
   def duration_in_months
     end_date = self.end_date || Date.current
