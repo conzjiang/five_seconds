@@ -10,7 +10,7 @@ class ExperiencesController < ApplicationController
     build_experience
 
     if @experience.save
-      params[:add] ? redirect_to(new_experience_url) : redirect_to root_url
+      params[:add] ? redirect_to(new_experience_url) : redirect_to(root_url)
     else
       flash[:errors] = @experience.errors.full_messages
       render :new
