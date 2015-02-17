@@ -21,6 +21,10 @@ RSpec.describe User do
     expect(user.password_digest).not_to be_nil
   end
 
+  it "sets 'Employed' as default status" do
+    expect(User.new.status).to eq("Employed")
+  end
+
   describe "::find_by_credentials" do
     it "finds a user by email and password" do
       user = create(:user, email: "aaa", password: "123456")
@@ -29,6 +33,13 @@ RSpec.describe User do
 
     it "returns nil if none is found" do
       expect(User.find_by_credentials("aaa", "bbbbbb")).to be_nil
+    end
+  end
+
+  describe "#full_name" do
+    it "combines first and last name" do
+      full_name = "#{user.first_name} #{user.last_name}"
+      expect(user.full_name).to eq(full_name)
     end
   end
 

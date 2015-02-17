@@ -15,9 +15,15 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
+  after_initialize :set_default_status
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     user.try(:is_password?, password) ? user : nil
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 
   def is_password?(password)
@@ -32,5 +38,10 @@ class User < ActiveRecord::Base
   def set_session_token!
     new_session = sessions.create!
     new_session.session_token
+  end
+
+  private
+  def set_default_status
+    self.status ||= "Employed"
   end
 end
