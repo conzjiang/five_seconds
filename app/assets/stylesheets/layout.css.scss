@@ -66,7 +66,8 @@ ul.nav-links {
     max-height: 300px;
   }
 
-  a, .nav-link > button {
+  a, button {
+    width: 100%;
     display: block;
     padding: 15px 0;
     text-transform: uppercase;
@@ -74,10 +75,6 @@ ul.nav-links {
     font-size: 18px;
     color: $content_background;
     background: #333;
-  }
-
-  .nav-link > button {
-    background: none;
   }
 
   @media (min-width: 600px) {
@@ -97,15 +94,14 @@ ul.nav-links {
       margin-right: 0;
     }
 
-    a, .nav-link > button {
+    a, button {
       padding: 2px 0;
       color: inherit;
       background: none;
       border-bottom: 3px solid #000;
     }
 
-    a:hover,
-    .nav-link > button:hover {
+    a:hover, button:hover {
       background: yellow;
     }
   }

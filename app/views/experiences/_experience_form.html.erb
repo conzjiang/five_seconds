@@ -22,8 +22,8 @@
     <%= date_select(
       "experience",
       "start_date",
-      start_year: 1990,
-      end_year: Date.current.year,
+      start_year: Date.current.year,
+      end_year: 1990,
       add_month_numbers: true,
       discard_day: true,
       prompt: true
@@ -38,23 +38,22 @@
     <%= date_select(
       "experience",
       "end_date",
-      start_year: 1990,
-      end_year: Date.current.year,
+      start_year: Date.current.year,
+      end_year: 1990,
       add_month_numbers: true,
       discard_day: true,
       prompt: true
     ) %>
   </fieldset>
 
-  <div class="fieldset-section">
-    <label>Job Bullet Points</label>
-  </div>
+  <div id="items" class="fieldset-section"></div>
 </article>
 
 <script>
   $(function () {
     new FiveSeconds.Views.ListItemView({
-      el: $(".fieldset-section")
-    }).addItem().times(3);
+      el: $(".fieldset-section"),
+      items: <%= @experience.items.pluck(:description).to_json.html_safe %>
+    });
   });
 </script>

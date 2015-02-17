@@ -1,7 +1,8 @@
 FiveSeconds.Views.ListItemView = Backbone.View.extend({
   initialize: function (options) {
-    this.description = options.description;
+    this.items = options.items || [];
     this.counter = 0;
+    this.times(this.items.length || 3);
   },
 
   template: JST["listItem"],
@@ -16,15 +17,13 @@ FiveSeconds.Views.ListItemView = Backbone.View.extend({
     this.$("#item-" + (this.counter - 1)).remove();
     this.$el.append(this.$itemField());
     this.counter++;
-
-    return this;
   },
 
   $itemField: function () {
     return this.template({
       itemCounter: this.counter,
       question: this.question(),
-      description: this.description
+      description: this.items[this.counter]
     });
   },
 
@@ -46,7 +45,7 @@ FiveSeconds.Views.ListItemView = Backbone.View.extend({
   },
 
   times: function (num) {
-    for (var i = 0; i < num - 1; i++) {
+    for (var i = 0; i < num; i++) {
       this.addItem();
     }
   }

@@ -29,18 +29,17 @@
     display: block;
     margin: 20px 0;
 
-    &.with-label {
-      margin: 40px 0;
-    }
-
     &:hover .x {
       display: inline;
     }
   }
 
+  .with-label {
+    margin: 40px 0;
+  }
+
   .fieldset-section {
-    margin-top: 40px;
-    margin-bottom: 20px;
+    @extend .with-label;
 
     fieldset:nth-of-type(1) {
       margin-top: 0;
@@ -97,6 +96,21 @@
 
 .button-wrapper {
   text-align: center;
+}
+
+.or {
+  display: block;
+  margin: 10px 0;
+  text-align: center;
+
+  &:before {
+    content: "or";
+  }
+
+  @media(min-width: 500px) {
+    display: inline-block;
+    margin: 0 10px;
+  }
 }
 
 button {
