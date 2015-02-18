@@ -17,7 +17,7 @@
       <li><a href="#">Search</a></li>
 
       <% if signed_in? %>
-        <li><a href="#">Resume</a></li>
+        <li><a href="<%= user_url(current_user) %>">Resume</a></li>
         <li>
           <form class="nav-link" action="<%= session_url %>" method="post">
             <%= form_auth %>

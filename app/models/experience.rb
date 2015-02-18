@@ -1,8 +1,8 @@
 class Experience < ActiveRecord::Base
-  validates :title, :start_date, presence: true
+  validates :title, :start_date, :company, presence: true
 
   belongs_to :user
-  belongs_to :company
+  belongs_to :company, inverse_of: :experiences
   has_many :items
 
   def duration_in_months

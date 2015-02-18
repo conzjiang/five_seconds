@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true, on: :create
 
   has_many :sessions
-  has_many :experiences
+  has_many :experiences, -> { order(start_date: :desc) }
 
   attr_reader :password
 

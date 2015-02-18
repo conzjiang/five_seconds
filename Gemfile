@@ -13,6 +13,7 @@ gem 'spring',        group: :development
 
 gem 'bcrypt', require: 'bcrypt'
 gem 'backbone-on-rails'
+gem 'draper', '~> 1.3'
 
 group :development do
   gem 'better_errors'

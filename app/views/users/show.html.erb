@@ -1,0 +1,20 @@
+<h1><%= @user.full_name %></h1>
+<h2><%= @user.status %></h2>
+
+<h3>Experience</h3>
+<ul>
+  <% @user.experiences.each do |exp| %>
+    <% exp = exp.decorate %>
+
+    <li>
+      <%= exp.title %> - <%= exp.company.name %>
+      <%= exp.time %>
+
+      <ul>
+        <% exp.items.each do |item| %>
+          <li><%= item.description %></li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>

@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module FiveSeconds
   class Application < Rails::Application
-    config.autoload_paths += %w( #{Rails.root}/app/services )
+    config.autoload_paths += [
+      "#{Rails.root}/app/services",
+      "#{Rails.root}/app/decorators"
+    ]
   end
 end
