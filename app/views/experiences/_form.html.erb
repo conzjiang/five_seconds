@@ -1,13 +1,15 @@
 <article>
   <fieldset>
-    <input type="text"
+    <input class="text-input"
+           type="text"
            name="experience[title]"
            value="<%= experience.title %>"
            placeholder="Job Title">
   </fieldset>
 
   <fieldset>
-    <input id="company"
+    <input class="text-input"
+           id="company"
            type="text"
            name="company[name]"
            value="<%= experience.company && experience.company.name %>"
@@ -15,6 +17,14 @@
     <input type="hidden"
            name="experience[company_id]"
            value="<%= experience.company_id %>">
+  </fieldset>
+
+  <fieldset class="with-label">
+    <label class="inline" for="experience_current">I currently work here</label>
+    <input id="experience_current"
+           class="fancy-checkbox"
+           type="checkbox"
+           <%= "checked" if experience.current? %>>
   </fieldset>
 
   <fieldset class="with-label">
@@ -26,15 +36,13 @@
       end_year: 1990,
       add_month_numbers: true,
       discard_day: true,
-      prompt: true
+      prompt: true,
+      selected: experience.start_date
     ) %>
   </fieldset>
 
-  <fieldset class="with-label">
-    <label for="experience_end_date">
-      End Date
-      <small>(Leave this field blank if you currently work here!)</small>
-    </label>
+  <fieldset id="end_date" class="with-label<%= " hide" if experience.current? %>">
+    <label for="experience_end_date">End Date</label>
     <%= date_select(
       "experience",
       "end_date",
@@ -42,18 +50,13 @@
       end_year: 1990,
       add_month_numbers: true,
       discard_day: true,
-      prompt: true
+      prompt: true,
+      selected: experience.end_date
     ) %>
   </fieldset>
 
-  <div id="items" class="fieldset-section"></div>
+  <fieldset>
+    <textarea name="experience[summary]"
+              placeholder="All the amazing things I did!"><%= experience.summary %></textarea>
+  </fieldset>
 </article>
-
-<script>
-  $(function () {
-    new FiveSeconds.Views.ListItemView({
-      el: $(".fieldset-section"),
-      items: <%= @experience.items.pluck(:description).to_json.html_safe %>
-    });
-  });
-</script>

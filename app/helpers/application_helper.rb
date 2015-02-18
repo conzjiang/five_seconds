@@ -7,6 +7,14 @@ module ApplicationHelper
     HTML
   end
 
+  def put_action
+    hidden_input("put")
+  end
+
+  def delete_action
+    hidden_input("delete")
+  end
+
   def render_errors
     errors = "<ul class=\"errors\">"
 
@@ -17,5 +25,14 @@ module ApplicationHelper
     errors << "</ul>"
 
     errors.html_safe
+  end
+
+  private
+  def hidden_input(method)
+    <<-HTML.html_safe
+      <input type="hidden"
+             name="_method"
+             value="#{method}">
+    HTML
   end
 end

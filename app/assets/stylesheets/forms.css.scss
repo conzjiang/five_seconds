@@ -1,21 +1,56 @@
 @import "utils/variables";
 
+.fieldset-section {
+  margin: 30px 0;
+
+  fieldset:nth-of-type(1) {
+    margin-top: 0;
+  }
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.text-input {
+  display: block;
+  width: calc(100% - 40px);
+  padding: 15px 20px;
+  background: #fff;
+}
+
+textarea {
+  height: 60px;
+}
+
+select {
+  padding: 10px 15px;
+  background: #fff;
+}
+
+fieldset {
+  position: relative;
+  display: block;
+  margin: 20px 0;
+
+  &:hover .x {
+    display: inline;
+  }
+}
+
 .form {
   width: 80%;
   max-width: 400px;
   margin: auto;
   padding: 30px 0;
 
-  h1 {
-    text-align: center;
-  }
-
   .x {
     display: none;
     position: absolute;
     top: -5px;
     right: -6px;
-    padding: 0 2px 3px 2px;
+    padding: 1px 2px 0 3px;
     font-size: 20px;
     color: #fff;
     line-height: 0.8;
@@ -24,53 +59,13 @@
     cursor: pointer;
   }
 
-  fieldset {
-    position: relative;
-    display: block;
-    margin: 20px 0;
-
-    &:hover .x {
-      display: inline;
-    }
-  }
-
-  .with-label {
-    margin: 40px 0;
-  }
-
-  .fieldset-section {
-    @extend .with-label;
-
-    fieldset:nth-of-type(1) {
-      margin-top: 0;
-    }
-  }
-
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-
   small {
     display: block;
     font-size: 14px;
   }
 
-  input, textarea {
-    display: block;
-    width: calc(100% - 40px);
-    padding: 15px 20px;
-    background: #fff;
+  .text-input {
     border-bottom: 2px solid #ccc;
-  }
-
-  textarea {
-    height: 90px - 30px;
-  }
-
-  select {
-    padding: 10px 15px;
-    background: #fff;
   }
 
   .error {
@@ -84,13 +79,29 @@
   }
 }
 
+.form.wide {
+  width: 100%;
+
+  fieldset {
+    margin: 0;
+  }
+
+  .with-label {
+    margin: 30px 20px;
+  }
+
+  .text-input {
+    border-bottom: 1px solid #ccc;
+  }
+}
+
 .x:before {
   content: "\00d7";
 }
 
 .add-item {
   display: inline-block;
-  margin: 5px 0;
+  margin: 5px 20px;
   font-size: 14px;
 }
 
@@ -122,5 +133,39 @@ button {
       color: $content_background;
       background: $button_hover;
     }
+  }
+}
+
+// EXPERIENCE FORM
+.fancy-checkbox {
+  margin-left: 5px;
+  position: relative;
+  top: 3px;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  border-radius: 10px;
+  background: #666;
+  cursor: pointer;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    background: white;
+    transition: left 0.3s;
+  }
+
+  &:checked {
+    background: $bright_theme;
+  }
+
+  &:checked:before {
+    left: 22px;
   }
 }

@@ -1,0 +1,27 @@
+<ul class="edit-options">
+  <li>Edit Header</li>
+  <% current_user.experiences.each do |exp| %>
+    <li>Edit <%= exp.title %> - <%= exp.company_name %></li>
+  <% end %>
+</ul>
+
+<h1><%= current_user.full_name %></h1>
+<h2><%= current_user.status %></h2>
+
+<% current_user.experiences.each do |exp| %>
+  <form class="form" action="<%= experience_url(exp) %>" method="post">
+    <%= form_auth %>
+    <%= put_action %>
+
+    <%= render "experiences/form", experience: exp %>
+  </form>
+<% end %>
+
+<script>
+  $(".form").on("change", "select", function (e) {
+    var $exp = $(e.target).closest(".experience")
+    $.ajax({
+
+    })
+  });
+</script>

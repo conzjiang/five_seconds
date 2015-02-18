@@ -5,6 +5,22 @@ RSpec.describe Experience do
   it { should belong_to(:company) }
   it { should have_many(:items) }
 
+  describe "#current?" do
+    it "returns true if current experience" do
+      exp = Experience.new(start_date: 1)
+      expect(exp).to be_current
+    end
+
+    it "returns false if not current experience" do
+      exp = Experience.new(start_date: 1, end_date: 2)
+      expect(exp).not_to be_current
+    end
+
+    it "returns false if start date isn't filled out" do
+      expect(Experience.new).not_to be_current
+    end
+  end
+
   describe "#duration_in_months" do
     it "calculates the duration of the work experience in months" do
       exp = Experience.new(

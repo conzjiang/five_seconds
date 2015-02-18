@@ -31,7 +31,7 @@ a.logo {
   text-align: center;
 
   &:after {
-    content: "▴";
+    content: "\25b4";
     display: inline-block;
     position: relative;
     bottom: 2px;
@@ -80,6 +80,7 @@ ul.nav-links {
 
   @media (min-width: 600px) {
     float: right;
+    max-height: none;
     padding-top: 8px;
 
     li {

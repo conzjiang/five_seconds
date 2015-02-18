@@ -8,12 +8,22 @@ FiveSeconds.Views.ListItemView = Backbone.View.extend({
   template: JST["listItem"],
 
   events: {
-    "click a": "addItem",
+    "click a": "attachNewField",
     "click .x": "removeItem"
   },
 
-  addItem: function (e) {
-    e && e.preventDefault();
+  attachNewField: function (e) {
+    var $newField;
+
+    e.preventDefault();
+    this.addItem();
+
+    $newField = this.$el.children().last().find("textarea");
+    $("body").scrollTop($("body").scrollTop() + 100);
+    $newField.focus();
+  },
+
+  addItem: function () {
     this.$("#item-" + (this.counter - 1)).remove();
     this.$el.append(this.$itemField());
     this.counter++;

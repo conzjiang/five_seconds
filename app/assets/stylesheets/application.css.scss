@@ -47,9 +47,15 @@ body {
 }
 
 h1 {
+  padding-bottom: 30px;
   font-family: $title_font;
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 900;
+  text-align: center;
+
+  @media(min-width: 500px) {
+    font-size: 40px;
+  }
 }
 
 h2 {
@@ -96,4 +102,12 @@ a {
   li {
     margin: 7px 0;
   }
+}
+
+.hide {
+  display: none;
+}
+
+.inline {
+  display: inline-block;
 }

@@ -7,7 +7,7 @@ class ExperiencesController < ApplicationController
 
   def create
     @experience = current_user.experiences.new(experience_params)
-    build_experience
+    assign_company
 
     if @experience.save
       params[:add] ? redirect_to(new_experience_url) : redirect_to(root_url)
@@ -27,7 +27,7 @@ class ExperiencesController < ApplicationController
     )
   end
 
-  def build_experience
-    BuildExperience.new(@experience, params).call
+  def assign_company
+    AssignCompany.new(@experience, params).call
   end
 end

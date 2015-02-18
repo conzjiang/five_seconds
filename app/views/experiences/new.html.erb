@@ -1,9 +1,9 @@
-<form class="form" action="<%= experiences_url %>" method="post">
+<form class="form wide" action="<%= experiences_url %>" method="post">
   <h1>Add your experience!</h1>
 
   <%= form_auth %>
 
-  <%= render "experience_form", counter: @counter, experience: @experience %>
+  <%= render "form", experience: @experience %>
 
   <div class="button-wrapper">
     <button name="add" value="true">Add Another Position!</button>
@@ -11,3 +11,11 @@
     <button>Save Resume</button>
   </div>
 </form>
+
+<script>
+  $(function () {
+    $("#experience_current").on("change", function () {
+      $("#end_date").toggleClass("hide");
+    });
+  });
+</script>

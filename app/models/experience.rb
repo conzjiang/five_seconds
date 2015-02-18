@@ -9,6 +9,10 @@ class Experience < ActiveRecord::Base
     company.name
   end
 
+  def current?
+    self.start_date.present? && self.end_date.nil?
+  end
+
   def duration_in_months
     end_date = self.end_date || Date.current
     date_in_months(end_date) - date_in_months(start_date) + 1
