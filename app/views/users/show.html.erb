@@ -1,20 +1,24 @@
-<h1><%= @user.full_name %></h1>
-<h2><%= @user.status %></h2>
+<section class="resume">
+  <header>
+    <h1><%= @user.full_name %></h1>
+    <h2><%= @user.status %></h2>
+  </header>
 
-<h3>Experience</h3>
-<ul>
-  <% @user.experiences.each do |exp| %>
-    <% exp = exp.decorate %>
+  <article class="experience">
+    <h3>Experience</h3>
+    <ul>
+      <% @user.experiences.map(&:decorate).each do |exp| %>
+        <li>
+          <h4><%= exp.title %> - <%= exp.company.name %></h4>
+          <%= exp.time %>
 
-    <li>
-      <%= exp.title %> - <%= exp.company.name %>
-      <%= exp.time %>
-
-      <ul>
-        <% exp.items.each do |item| %>
-          <li><%= item.description %></li>
-        <% end %>
-      </ul>
-    </li>
-  <% end %>
-</ul>
+          <ul>
+            <% exp.items.each do |item| %>
+              <li><%= item.description %></li>
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+  </article>
+</section>
