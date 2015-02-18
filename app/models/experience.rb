@@ -7,7 +7,7 @@ class Experience < ActiveRecord::Base
 
   def duration_in_months
     end_date = self.end_date || Date.current
-    date_in_months(end_date) - date_in_months(start_date)
+    date_in_months(end_date) - date_in_months(start_date) + 1
   end
 
   private

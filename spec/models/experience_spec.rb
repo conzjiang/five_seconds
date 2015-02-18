@@ -12,14 +12,14 @@ RSpec.describe Experience do
         end_date: Date.new(2012, 3)
       )
 
-      expect(exp.duration_in_months).to eq(15)
+      expect(exp.duration_in_months).to eq(16)
     end
 
     it "calculates months until now if end date not given" do
       exp = Experience.new(start_date: Date.new(2014, 12))
       allow(Date).to receive(:current).and_return(Date.new(2015, 2, 12))
 
-      expect(exp.duration_in_months).to eq(2)
+      expect(exp.duration_in_months).to eq(3)
     end
   end
 end
