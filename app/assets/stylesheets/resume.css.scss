@@ -1,3 +1,5 @@
+@import "utils/variables";
+
 header {
   display: block;
   margin-bottom: 30px;
@@ -10,4 +12,29 @@ header {
   article {
     margin: 30px 0;
   }
+}
+
+.experiences {
+  > li {
+    margin: 20px 0;
+  }
+
+  > li:first-child {
+    margin-top: 0;
+  }
+}
+
+.items {
+  list-style: disc;
+  padding-left: 30px;
+
+  li {
+    margin: 5px 0;
+  }
+}
+
+small {
+  display: block;
+  font-size: 14px;
+  color: $border_color;
 }
