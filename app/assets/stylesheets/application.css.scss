@@ -7,7 +7,7 @@
 @import "utils/variables";
 
 html, body, h1, h2, h3, h4, h5, form, fieldset, label, input, button, ul, li, a,
-select, textarea, small {
+select, textarea, small, strong, pre {
   margin: 0;
   padding: 0;
   border: 0;
@@ -79,12 +79,6 @@ h5 {
   font-weight: 700;
 }
 
-.group:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
 ul {
   list-style: none;
 }
@@ -102,6 +96,16 @@ a {
   li {
     margin: 7px 0;
   }
+}
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.show {
+  display: block;
 }
 
 .hide {

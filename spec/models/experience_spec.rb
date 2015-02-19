@@ -3,7 +3,6 @@ RSpec.describe Experience do
   it { should validate_presence_of(:start_date) }
   it { should belong_to(:user) }
   it { should belong_to(:company) }
-  it { should have_many(:items) }
 
   describe "#current?" do
     it "returns true if current experience" do

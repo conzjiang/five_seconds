@@ -3,7 +3,6 @@ class Experience < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :company, inverse_of: :experiences
-  has_many :items
 
   def company_name
     company.name
@@ -16,6 +15,10 @@ class Experience < ActiveRecord::Base
   def duration_in_months
     end_date = self.end_date || Date.current
     date_in_months(end_date) - date_in_months(start_date) + 1
+  end
+
+  def items
+    summary[2..-1].split("\r\n-").map(&:strip)
   end
 
   private
