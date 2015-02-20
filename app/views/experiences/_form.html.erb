@@ -29,30 +29,12 @@
 
   <fieldset class="with-label">
     <label for="experience_start_date">Start Date</label>
-    <%= date_select(
-      "experience",
-      "start_date",
-      start_year: Date.current.year,
-      end_year: 1990,
-      add_month_numbers: true,
-      discard_day: true,
-      prompt: true,
-      selected: experience.start_date
-    ) %>
+    <%= exp_date_select("start_date", experience.start_date) %>
   </fieldset>
 
   <fieldset id="end_date" class="with-label<%= " hide" if experience.current? %>">
     <label for="experience_end_date">End Date</label>
-    <%= date_select(
-      "experience",
-      "end_date",
-      start_year: Date.current.year,
-      end_year: 1990,
-      add_month_numbers: true,
-      discard_day: true,
-      prompt: true,
-      selected: experience.end_date
-    ) %>
+    <%= exp_date_select("end_date", experience.end_date) %>
   </fieldset>
 
   <fieldset>

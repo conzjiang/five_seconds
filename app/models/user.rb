@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
     user.try(:is_password?, password) ? user : nil
   end
 
+  def self.statuses_list
+    statuses.keys
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end

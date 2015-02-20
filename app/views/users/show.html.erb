@@ -8,18 +8,8 @@
   <article class="experience">
     <h3>Experience</h3>
     <ul class="experiences">
-      <% @user.experiences.map(&:decorate).each do |exp| %>
-        <li>
-          <h4><%= exp.title %></h4>
-          <h5><%= exp.company_name %></h5>
-          <small><%= exp.time %></small>
-
-          <ul class="items">
-            <% exp.items.each do |item| %>
-              <li><%= item %></li>
-            <% end %>
-          </ul>
-        </li>
+      <% @user.experiences.each do |exp| %>
+        <li><%= render exp %></li>
       <% end %>
     </ul>
   </article>

@@ -1,27 +1,52 @@
-<ul class="edit-options">
-  <li>Edit Header</li>
-  <% current_user.experiences.each do |exp| %>
-    <li>Edit <%= exp.title %> - <%= exp.company_name %></li>
-  <% end %>
-</ul>
+<section class="resume">
+  <header>
+    <h1><%= current_user.full_name %></h1>
+    <h2 class="status-select">
+      <select name="user[status]">
+        <option></option>
+        <% User.statuses_list.each do |status| %>
+          <option value="<%= status %>"
+                  <%= "selected" if current_user.status == status %>>
+            <%= status %>
+          </option>
+        <% end %>
+      </select>
+    </h2>
+  </header>
 
-<h1><%= current_user.full_name %></h1>
-<h2><%= current_user.status %></h2>
+  <ul class="experiences">
+    <% current_user.experiences.each do |exp| %>
+      <li>
+        <%= render exp %>
 
-<% current_user.experiences.each do |exp| %>
-  <form class="form" action="<%= experience_url(exp) %>" method="post">
-    <%= form_auth %>
-    <%= put_action %>
+        <a class="edit" href="#exp-<%= exp.id %>">Edit</a>
 
-    <%= render "experiences/form", experience: exp %>
-  </form>
-<% end %>
+        <form id="exp-<%= exp.id %>"
+              class="form wide hide"
+              action="<%= experience_url(exp) %>"
+              method="post">
+          <%= form_auth %>
+          <%= put_action %>
+
+          <%= render "experiences/form", experience: exp %>
+
+          <button class="update-exp">Update</button>
+        </form>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<%= javascript_include_tag "experienceForm" %>
 
 <script>
-  $(".form").on("change", "select", function (e) {
-    var $exp = $(e.target).closest(".experience")
-    $.ajax({
+  $(function () {
+    $(".edit").on("click", function (e) {
+      var expForm;
 
-    })
+      e.preventDefault();
+      expForm = $(this).attr("href");
+      $(expForm).toggleClass("hide");
+    });
   });
 </script>

@@ -1,0 +1,11 @@
+<% experience = experience.decorate %>
+
+<h4><%= experience.title %></h4>
+<h5><%= experience.company_name %></h5>
+<small><%= experience.time %></small>
+
+<ul class="items">
+  <% experience.items.each do |item| %>
+    <li><%= item %></li>
+  <% end %>
+</ul>
